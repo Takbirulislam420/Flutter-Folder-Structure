@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:top_talent_agency/app/const/app_colors.dart';
+import 'package:top_talent_agency/app/core/const/app_colors.dart';
 
 class AppBarThemes {
   static const AppBarTheme lightAppBar = AppBarTheme(

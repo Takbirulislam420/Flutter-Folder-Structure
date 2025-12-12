@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:top_talent_agency/app/const/app_colors.dart';
+import 'package:top_talent_agency/app/core/const/app_colors.dart';
 import 'package:top_talent_agency/features/admin/alerts/admin_alert_screen.dart';
 import 'package:top_talent_agency/features/admin/home/admin_home_screen.dart';
 import 'package:top_talent_agency/features/admin/managers/admin_manager_screen.dart';
