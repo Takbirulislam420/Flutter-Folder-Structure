@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           CustomTextFormField(
                             controller: _passwordController,
                             hintText: AppStrings.passwordHint,
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.text,
                             isPassword: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
