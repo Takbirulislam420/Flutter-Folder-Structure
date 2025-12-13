@@ -1,17 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static ColorScheme darkColorScheme = ColorScheme(
-    brightness: Brightness.dark,
-    primary: Color(0xFF101829),
-    onPrimary: Color(0xFFA8BFFF),
-    secondary: Color(0xff23293D),
-    onSecondary: Color(0xffA5A5AB),
-    error: Color.fromRGBO(235, 61, 77, 0.09),
-    onError: Color(0xffEB3D4D),
-    surface: Color(0xff161721),
-    onSurface: Color(0xffF9FAFB),
-  );
   static const Color primary = Color(0xFF101829);
   static const Color onPrimary = Color(0xFFA8BFFF);
   static const Color secondary = Color(0xff23293D);
@@ -35,7 +24,7 @@ class AppColors {
   static const Color resetButtonColor = Color(0xff222539);
   static const Color redColor = Color(0xffFF4C4F);
 
-  static const appColor = Color(0xFF101829);
+  static const appColor = primary;
 
   // icon
   static const focusIconColor = Colors.white;
@@ -47,4 +36,16 @@ class AppColors {
 
   // Navbar  color
   static const focusedNavItemColor = Colors.green;
+
+  // static ColorScheme darkColorScheme = ColorScheme(
+  //   brightness: Brightness.dark,
+  //   primary: Color(0xFF101829),
+  //   onPrimary: Color(0xFFA8BFFF),
+  //   secondary: Color(0xff23293D),
+  //   onSecondary: Color(0xffA5A5AB),
+  //   error: Color.fromRGBO(235, 61, 77, 0.09),
+  //   onError: Color(0xffEB3D4D),
+  //   surface: Color(0xff161721),
+  //   onSurface: Color(0xffF9FAFB),
+  // );
 }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:top_talent_agency/app/core/const/app_colors.dart';
+import 'package:top_talent_agency/app/theme/part_of_theme/app_elevated_button_theme.dart';
+import 'package:top_talent_agency/app/theme/part_of_theme/app_text_field_theme.dart';
+import 'package:top_talent_agency/app/theme/part_of_theme/app_text_theme.dart';
 
 // This is a custom theme file with complete ColorScheme fields
 // Each color is commented to explain its purpose
@@ -13,8 +17,8 @@ class MyAppDarkTheme {
       brightness: Brightness.dark,
 
       // MAIN BRAND COLOR
-      primary: Color(0xFF101829), // Main brand color (still dark)
-      onPrimary: Color(0xFFA8BFFF), // Text/icons on primary
+      primary: AppColors.primary, // Main brand color (still dark)
+      onPrimary: AppColors.onPrimary, // Text/icons on primary
       primaryContainer: Color(
         0xFF0E1424,
       ), // Slightly lighter container for dark theme
@@ -58,7 +62,11 @@ class MyAppDarkTheme {
       inversePrimary: Color(0xFF7489FF),
     ),
 
-    scaffoldBackgroundColor: Color(0xff161721),
+    textTheme: AppTextTheme.lightTextTheme,
+    inputDecorationTheme: AppTextFieldTheme.darkThemeDecoration(),
+    elevatedButtonTheme: AppElevatedButtonTheme.darkButton,
+
+    scaffoldBackgroundColor: AppColors.primary,
 
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xff0E1424), // Dark app bar color
@@ -70,11 +78,6 @@ class MyAppDarkTheme {
       backgroundColor: Color(0xff212432),
       selectedItemColor: Color(0xff4847F1),
       unselectedItemColor: Color(0xff777980),
-    ),
-
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: Color(0xffF9FAFB)), // Bright text on dark bg
-      bodyMedium: TextStyle(color: Color(0xffA5A5AB)), // Medium contrast text
     ),
   );
 }

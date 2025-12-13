@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:top_talent_agency/app/core/const/app_colors.dart';
 import 'package:top_talent_agency/app/theme/part_of_theme/app_bar_theme.dart';
+import 'package:top_talent_agency/app/theme/part_of_theme/app_elevated_button_theme.dart';
+import 'package:top_talent_agency/app/theme/part_of_theme/app_text_field_theme.dart';
 import 'package:top_talent_agency/app/theme/part_of_theme/app_text_theme.dart';
 import 'package:top_talent_agency/app/theme/part_of_theme/bottom_nav_bar_theme.dart';
 
@@ -13,10 +16,8 @@ class MyAppLightTheme {
       brightness: Brightness.light,
 
       // MAIN BRAND COLOR (Buttons, FAB, Toggled items)
-      primary: Color(0xFF101829), // Your main brand color
-      onPrimary: Color(
-        0xFFA8BFFF,
-      ), // Text/icons that appear on primary surfaces
+      primary: AppColors.primary, // Main brand color (still dark)
+      onPrimary: AppColors.onPrimary, // Text/icons on primary
       primaryContainer: Color(
         0xFFE3E7F5,
       ), // Used for elevated buttons, chips, etc.
@@ -63,7 +64,9 @@ class MyAppLightTheme {
       inversePrimary: Color(0xFF7489FF), // Used when primary appears on dark bg
     ),
 
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.primary,
+    inputDecorationTheme: AppTextFieldTheme.lightThemeDecoration(),
+    elevatedButtonTheme: AppElevatedButtonTheme.lightButton,
 
     appBarTheme: AppBarThemes.lightAppBar,
     bottomNavigationBarTheme: BottomNavBarTheme.lightNavBarThemeData,
