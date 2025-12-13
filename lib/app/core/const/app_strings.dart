@@ -14,6 +14,8 @@ class AppStrings {
   // For remember section
   static const String rememberMe = "Remember Me";
   static const String forgotPassword = "Forgot password?";
+  static const String forgotPasswordDes =
+      "Enter your email and we sill send you a verification code";
 
   // button
   static const String signInButton = "Sign in";
