@@ -25,6 +25,7 @@ class AppColors {
   static const Color redColor = Color(0xffFF4C4F);
 
   static const appColor = primary;
+  static const whiteColor = onSurface;
 
   // icon
   static const focusIconColor = Colors.white;

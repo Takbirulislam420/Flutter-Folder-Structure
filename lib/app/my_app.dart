@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_talent_agency/app/theme/app_theme.dart';
-import 'package:top_talent_agency/features/admin/main/admin_main_screen.dart';
 import 'package:top_talent_agency/features/auth/login/screen/login_screen.dart';
-import 'package:top_talent_agency/features/onboarding/splash/screen/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

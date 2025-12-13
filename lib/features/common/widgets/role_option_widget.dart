@@ -28,7 +28,9 @@ class RoleOptionWidget extends StatelessWidget {
             height: 24.0,
             child: Radio<int>(
               value: value,
+              // ignore: deprecated_member_use
               groupValue: groupValue,
+              // ignore: deprecated_member_use
               onChanged: (int? newValue) {
                 if (newValue != null) onChanged(newValue);
               },

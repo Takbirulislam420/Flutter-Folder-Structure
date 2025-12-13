@@ -5,9 +5,9 @@ class AppElevatedButtonTheme {
   static final ElevatedButtonThemeData lightButton = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: AppColors.primary,
-      foregroundColor: AppColors.onPrimary,
+      foregroundColor: AppColors.whiteColor,
       padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       elevation: 2,
     ),
@@ -16,9 +16,9 @@ class AppElevatedButtonTheme {
   static final ElevatedButtonThemeData darkButton = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: AppColors.primary,
-      foregroundColor: AppColors.onPrimary,
+      foregroundColor: AppColors.whiteColor,
       padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       elevation: 2,
     ),
