@@ -16,9 +16,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
 
-  int _selectedRole = 0;
-  bool _rememberMe = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +89,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           SizedBox(height: 20.h),
                           // 6. Sign In Button
                           CustomElevatedButton(
-                            text: AppStrings.signInButton,
+                            text: AppStrings.sendCodeButton,
                             onPressed: _onPressedSignInButton,
                           ),
                           // Bottom spacing

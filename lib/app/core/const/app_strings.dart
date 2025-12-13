@@ -19,4 +19,5 @@ class AppStrings {
 
   // button
   static const String signInButton = "Sign in";
+  static const String sendCodeButton = "Send code";
 }
