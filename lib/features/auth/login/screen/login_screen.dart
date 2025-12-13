@@ -14,6 +14,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   int _selectedRole = 0;
   bool _rememberMe = false;
 
@@ -44,54 +48,79 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(height: 15.h),
-                        Center(
-                          child: Text(
-                            AppStrings.loginTitle,
-                            style: TextTheme.of(context).titleSmall,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(height: 15.h),
+                          Center(
+                            child: Text(
+                              AppStrings.loginTitle,
+                              style: TextTheme.of(context).titleSmall,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 15.h),
-                        // 1. Role Selection (Admin/Manager)
-                        _selectOption(),
-                        SizedBox(height: 30.h),
-                        // 2. Email Input
-                        Text(
-                          AppStrings.emailLabel,
-                          style: TextTheme.of(context).labelLarge,
-                        ),
-                        SizedBox(height: 8.h),
-                        CustomTextFormField(
-                          hintText: AppStrings.emailHint,
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                        SizedBox(height: 20.h),
-                        // 3. Password Input
-                        Text(
-                          AppStrings.passwordLabel,
-                          style: TextTheme.of(context).labelLarge,
-                        ),
-                        SizedBox(height: 8.h),
-                        CustomTextFormField(
-                          hintText: AppStrings.passwordHint,
-                          keyboardType: TextInputType.emailAddress,
-                          isPassword: true,
-                        ),
-                        SizedBox(height: 15.h),
-                        // 5. Remember Me & Forgot Password
-                        _remanberAndForgotPass(),
-                        SizedBox(height: 40.h),
-                        // 6. Sign In Button
-                        CustomElevatedButton(
-                          text: AppStrings.signInButton,
-                          onPressed: _onPressedSignInButton,
-                        ),
-                        // Bottom spacing
-                        SizedBox(height: 30.h),
-                      ],
+                          SizedBox(height: 15.h),
+                          // 1. Role Selection (Admin/Manager)
+                          _selectOption(),
+                          SizedBox(height: 30.h),
+                          // 2. Email Input
+                          Text(
+                            AppStrings.emailLabel,
+                            style: TextTheme.of(context).labelLarge,
+                          ),
+                          SizedBox(height: 8.h),
+                          CustomTextFormField(
+                            controller: _emailController,
+                            hintText: AppStrings.emailHint,
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter your email";
+                              }
+                              if (!RegExp(
+                                r"^[\w-\.]+@([\w-]+\.)+[\w]{2,4}",
+                              ).hasMatch(value)) {
+                                return "Enter a valid email";
+                              }
+                              return null;
+                            },
+                          ),
+                          SizedBox(height: 20.h),
+                          // 3. Password Input
+                          Text(
+                            AppStrings.passwordLabel,
+                            style: TextTheme.of(context).labelLarge,
+                          ),
+                          SizedBox(height: 8.h),
+                          CustomTextFormField(
+                            controller: _passwordController,
+                            hintText: AppStrings.passwordHint,
+                            keyboardType: TextInputType.emailAddress,
+                            isPassword: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter your password";
+                              }
+                              if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                              }
+                              return null;
+                            },
+                          ),
+                          SizedBox(height: 15.h),
+                          // 5. Remember Me & Forgot Password
+                          _remanberAndForgotPass(),
+                          SizedBox(height: 40.h),
+                          // 6. Sign In Button
+                          CustomElevatedButton(
+                            text: AppStrings.signInButton,
+                            onPressed: _onPressedSignInButton,
+                          ),
+                          // Bottom spacing
+                          SizedBox(height: 30.h),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -101,6 +130,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   // Select Admin or Manager option
@@ -171,9 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         // Forgot Password Button
         TextButton(
-          onPressed: () {
-            // Handle forgot password tap
-          },
+          onPressed: _onPressedForgotButton,
           child: Text(
             AppStrings.forgotPassword,
             style: TextTheme.of(context).bodyMedium,
@@ -183,5 +217,15 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _onPressedSignInButton() {}
+  void _onPressedForgotButton() {}
+  void _onPressedSignInButton() {
+    if (_formKey.currentState!.validate()) {
+      // All fields are valid
+      print("Email: ${_emailController.text}");
+      print("Password: ${_passwordController.text}");
+    } else {
+      // Validation failed
+      print("Form not valid");
+    }
+  }
 }
