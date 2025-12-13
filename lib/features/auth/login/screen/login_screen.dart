@@ -59,21 +59,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         _selectOption(),
                         SizedBox(height: 30.h),
                         // 2. Email Input
-                        Text('Email', style: TextTheme.of(context).labelLarge),
+                        Text(
+                          AppStrings.emailLabel,
+                          style: TextTheme.of(context).labelLarge,
+                        ),
                         SizedBox(height: 8.h),
                         CustomTextFormField(
-                          hintText: 'Enter your email address',
+                          hintText: AppStrings.emailHint,
                           keyboardType: TextInputType.emailAddress,
                         ),
                         SizedBox(height: 20.h),
                         // 3. Password Input
                         Text(
-                          'Password',
+                          AppStrings.passwordLabel,
                           style: TextTheme.of(context).labelLarge,
                         ),
                         SizedBox(height: 8.h),
                         CustomTextFormField(
-                          hintText: 'Enter your password',
+                          hintText: AppStrings.passwordHint,
                           keyboardType: TextInputType.emailAddress,
                           isPassword: true,
                         ),
@@ -83,14 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 40.h),
                         // 6. Sign In Button
                         CustomElevatedButton(
-                          text: 'Sign in',
-                          onPressed: () {
-                            // print(
-                            //   'Role: ${_selectedRole == 0 ? 'Admin' : 'Manager'}, Remember Me: $_rememberMe',
-                            // );
-                          },
+                          text: AppStrings.signInButton,
+                          onPressed: _onPressedSignInButton,
                         ),
-
                         // Bottom spacing
                         SizedBox(height: 30.h),
                       ],
@@ -113,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           RoleOptionWidget(
-            title: 'Admin',
+            title: AppStrings.adminOption,
             value: 0,
             groupValue: _selectedRole,
             onChanged: (value) {
@@ -123,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
             },
           ),
           RoleOptionWidget(
-            title: 'Manager',
+            title: AppStrings.managerOption,
             value: 1,
             groupValue: _selectedRole,
             onChanged: (value) {
@@ -146,8 +144,8 @@ class _LoginScreenState extends State<LoginScreen> {
         Row(
           children: [
             SizedBox(
-              width: 24.0,
-              height: 24.0,
+              width: 24.0.w,
+              height: 24.0.h,
               child: Checkbox(
                 value: _rememberMe,
                 onChanged: (bool? newValue) {
@@ -163,8 +161,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 side: const BorderSide(color: Color(0xFF0F1B2C), width: 1.5),
               ),
             ),
-            const SizedBox(width: 8),
-            const Text('Remember Me'),
+            SizedBox(width: 2.w),
+            Text(
+              AppStrings.rememberMe,
+              style: TextTheme.of(context).bodyMedium,
+            ),
           ],
         ),
 
@@ -173,15 +174,14 @@ class _LoginScreenState extends State<LoginScreen> {
           onPressed: () {
             // Handle forgot password tap
           },
-          child: const Text(
-            'Forgot password?',
-            style: TextStyle(
-              color: Color(0xFF0F1B2C),
-              fontWeight: FontWeight.w500,
-            ),
+          child: Text(
+            AppStrings.forgotPassword,
+            style: TextTheme.of(context).bodyMedium,
           ),
         ),
       ],
     );
   }
+
+  void _onPressedSignInButton() {}
 }
