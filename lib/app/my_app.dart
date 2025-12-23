@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_talent_agency/app/theme/app_theme.dart';
-import 'package:top_talent_agency/features/auth/new_password/screen/new_password_screen.dart';
+import 'package:top_talent_agency/features/auth/login/screen/login_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           theme: CustomTheme.lightTheme,
           themeMode: ThemeMode.system,
           darkTheme: CustomTheme.darkTheme,
-          home: NewPasswordScreen(),
+          home: LoginScreen(),
         );
       },
     );

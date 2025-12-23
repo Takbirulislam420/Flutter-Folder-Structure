@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_talent_agency/app/core/const/app_strings.dart';
+import 'package:top_talent_agency/app/core/validators/validators.dart';
 import 'package:top_talent_agency/features/common/widgets/custom_elevated_button.dart';
 import 'package:top_talent_agency/features/common/widgets/custom_text_form_field.dart';
 import 'package:top_talent_agency/features/common/widgets/logo_svg.dart';
@@ -69,16 +70,10 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                             hintText: AppStrings.newPasswordHint,
                             keyboardType: TextInputType.text,
                             validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return AppStrings.newPasswordError;
-                              }
-                              if (value.length < 6) {
-                                return "Password must be at least 6 characters";
-                              }
-                              if (value.length > 16) {
-                                return "Password cannot be more than 16 characters";
-                              }
-                              return null;
+                              return Validators.password(
+                                value: value,
+                                emptyError: AppStrings.newPasswordError,
+                              );
                             },
                           ),
                           SizedBox(height: 8.h),
@@ -88,19 +83,12 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                             keyboardType: TextInputType.text,
                             isPassword: true,
                             validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return AppStrings.retypePasswordError;
-                              }
-                              if (value.length < 6) {
-                                return "Password must be at least 6 characters";
-                              }
-                              if (value.length > 16) {
-                                return "Password cannot be more than 16 characters";
-                              }
-                              if (value != _newPasswordController.text) {
-                                return "Passwords do not match";
-                              }
-                              return null;
+                              return Validators.password(
+                                value: value,
+                                emptyError: AppStrings.retypePasswordError,
+                                matchValue: _newPasswordController.text,
+                                matchError: "Passwords do not match",
+                              );
                             },
                           ),
                           SizedBox(height: 20.h),
@@ -137,5 +125,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
     } else {
       print("Form not valid");
     }
+    //ToastUtil.info(context, "Saved!");
+    //ShowFlutterToast.show("Login successful");
   }
 }

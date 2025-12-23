@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_talent_agency/app/core/const/app_strings.dart';
+import 'package:top_talent_agency/app/core/validators/validators.dart';
 import 'package:top_talent_agency/features/common/widgets/custom_elevated_button.dart';
 import 'package:top_talent_agency/features/common/widgets/custom_text_form_field.dart';
 import 'package:top_talent_agency/features/common/widgets/logo_svg.dart';
@@ -74,17 +75,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: _emailController,
                             hintText: AppStrings.emailHint,
                             keyboardType: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your email";
-                              }
-                              if (!RegExp(
-                                r"^[\w-\.]+@([\w-]+\.)+[\w]{2,4}",
-                              ).hasMatch(value)) {
-                                return "Enter a valid email";
-                              }
-                              return null;
-                            },
+                            validator: (value) => Validators.email(
+                              value: value,
+                              emptyError: "Please enter your email",
+                              invalidError: "Enter a valid email",
+                            ),
                           ),
                           SizedBox(height: 20.h),
                           // 3. Password Input
@@ -98,15 +93,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintText: AppStrings.passwordHint,
                             keyboardType: TextInputType.text,
                             isPassword: true,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your password";
-                              }
-                              if (value.length < 6) {
-                                return "Password must be at least 6 characters";
-                              }
-                              return null;
-                            },
+                            validator: (value) => Validators.password(
+                              value: value,
+                              emptyError: "Please enter your password",
+                            ),
                           ),
                           SizedBox(height: 15.h),
                           // 5. Remember Me & Forgot Password
